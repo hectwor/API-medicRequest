@@ -8,4 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/listDoctors', algoritms.getAll);
+router.post('/separarCita', algoritms.setDate);
+
 module.exports = router;

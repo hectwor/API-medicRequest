@@ -17,6 +17,22 @@ function SelectQuery(req, res, next) {
         })
 }
 
+function InsertQueryCita(req, res, next, values){
+    const query = "insert into public.cita values "+values;
+    connectionPsql.any(query)
+        .then(function(data){
+            res.status(200)
+                .json({
+                    status : 'success',
+                    data:data,
+                    message : 'Retrieved List'
+                });
+        })
+        .catch(function (err) {
+            return next(err);
+        })
+}
 module.exports = {
-    SelectQuery:SelectQuery
+    SelectQuery:SelectQuery,
+    InsertQueryCita:InsertQueryCita
 };
