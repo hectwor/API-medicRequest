@@ -16,6 +16,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/listDoctors', algoritms.getAll);
+router.get('/existePaciente=:dniPatient', algoritms.existPatient);
+router.post('/crearPaciente', algoritms.createPatient);
 router.post('/separarCita', algoritms.setDate);
 
 module.exports = router;

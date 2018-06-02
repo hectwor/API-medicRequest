@@ -1,0 +1,25 @@
+Verificar existencia de paciente
+GET a: /existePaciente=dni
+
+Crear nuevo Paciente
+POST a: /crearPaciente
+{
+    "numero_seguro_social":"",
+    "nombre":"",
+    "apellido":"",
+    "domicilio":"",
+    "provincia":"",
+    "telefono":"",
+    "numero_historial_clinico":"",
+    "observaciones":"",
+    "dni":""
+}
+
+Crear Cita
+POST a: /separarCita
+{
+    "fecha": "2018-10-12",
+    "hora": "12:12",
+    "id_medico": "1",
+    "id_paciente": "1"
+}

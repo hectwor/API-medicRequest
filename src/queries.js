@@ -1,8 +1,10 @@
 const psql = require ('../DAO/dbPostgres');
 const connectionPsql = psql.connection;
 
-function SelectQuery(req, res, next) {
-    const query = "select * from medico";
+function SelectQuery(req, res, next, table, where) {
+    let whereF = "";
+    if (where !== "") whereF = "where "+where;
+    const query = "select * from "+" "+table+" "+whereF;
     connectionPsql.any(query)
         .then(function(data){
             res.status(200)
@@ -17,8 +19,8 @@ function SelectQuery(req, res, next) {
         })
 }
 
-function InsertQueryCita(req, res, next, values){
-    const query = "insert into public.cita values "+values;
+function InsertQueryCita(req, res, next, table, values){
+    const query = "insert into "+table+" values "+values;
     connectionPsql.any(query)
         .then(function(data){
             res.status(200)
