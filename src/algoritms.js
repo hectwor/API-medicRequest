@@ -1,7 +1,10 @@
 const queries = require('../src/queries');
-function getAll(req, res, next) {
-
+function getAllDoctors(req, res, next) {
   queries.SelectQuery(req, res, next, "medico", "");
+}
+
+function getAllPatients(req, res, next) {
+    queries.SelectQuery(req, res, next, "paciente", "");
 }
 
 function setDate(req, res, next){
@@ -36,7 +39,8 @@ function createPatient(req, res, next){
     queries.InsertQueryCita(req, res, next, "paciente", values);
 }
 module.exports = {
-  getAll: getAll,
+    getAllDoctors: getAllDoctors,
+    getAllPatients: getAllPatients,
     setDate: setDate,
     existPatient:existPatient,
     createPatient:createPatient

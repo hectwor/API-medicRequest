@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/listDoctors', algoritms.getAll);
+router.get('/listDoctors', algoritms.getAllDoctors);
+router.get('/ListPatients', algoritms.getAllPatients);
 router.get('/existePaciente=:dniPatient', algoritms.existPatient);
 router.post('/crearPaciente', algoritms.createPatient);
 router.post('/separarCita', algoritms.setDate);
