@@ -16,7 +16,7 @@ function setDate(req, res, next){
       jsonR.id_medico+", "+
       jsonR.id_paciente+")";
 
-  queries.InsertQueryCita(req, res, next, "cita", values);
+  queries.InsertQuery(req, res, next, "cita", values);
 }
 
 function existPatient(req, res, next){
@@ -36,7 +36,7 @@ function createPatient(req, res, next){
       jsonR.observaciones+"', '"+
       jsonR.dni+"')";
 
-    queries.InsertQueryCita(req, res, next, "paciente", values);
+    queries.InsertQuery(req, res, next, "paciente", values);
 }
 module.exports = {
     getAllDoctors: getAllDoctors,
