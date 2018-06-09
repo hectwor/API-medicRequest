@@ -7,7 +7,7 @@ function SelectQuery(req, res, next, table, where) {
     let whereF = "";
     if (where !== "") whereF = "where "+where;
     const query = "select * from "+" "+table+" "+whereF;
-    connectionPsql.any(query)
+    connectionPsqlBackup.any(query)
         .then(function(data){
             res.status(200)
                 .json({
@@ -18,7 +18,7 @@ function SelectQuery(req, res, next, table, where) {
         })
         .catch(function(err){
             if(err){
-                connectionPsqlBackup.any(query)
+                connectionPsql.any(query)
                     .then(function(data){
                         res.status(200)
                             .json({
