@@ -6,7 +6,7 @@ function getAllDoctors(req, res, next) {
 function getAllPatients(req, res, next) {
     queries.SelectQuery(req, res, next, "paciente", "");
 }
-function getAllDates() {
+function getAllDates(req, res, next) {
     queries.SelectQuery(req, res, next, "cita", "");
 }
 
