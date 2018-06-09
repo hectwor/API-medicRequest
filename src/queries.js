@@ -1,5 +1,5 @@
-const psql = require ('../DAO/dbPostgresAMAZON');
-const psqlBackup = require ('../DAO/dbPostgresAZURE');
+const psqlBackup = require ('../DAO/dbPostgresAMAZON');
+const psql = require ('../DAO/dbPostgresAZURE');
 const connectionPsql = psql.connection;
 const connectionPsqlBackup = psqlBackup.connection;
 
@@ -18,15 +18,7 @@ function SelectQuery(req, res, next, table, where) {
         })
         .catch(function(err){
             if(err){
-                connectionPsql.any(query)
-                    .then(function(data){
-                        res.status(200)
-                            .json({
-                                status : 'success',
-                                data:data,
-                                message : 'Retrieved List'
-                            });
-                    });
+               capturarerror();
             }
             return next(err);
         });
@@ -46,6 +38,10 @@ function InsertQuery(req, res, next, table, values){
         .catch(function (err) {
             return next(err);
         });
+
+}
+function InsertQueryBackup(req, res, next, table, values){
+    const query = "insert into "+table+" values "+values;
     connectionPsqlBackup.any(query)
         .then(function(data){
             res.status(200)
@@ -59,7 +55,19 @@ function InsertQuery(req, res, next, table, values){
             return next(err);
         });
 }
+function capturarerror(){
+    connectionPsql.any(query)
+        .then(function(data){
+            res.status(200)
+                .json({
+                    status : 'success',
+                    data:data,
+                    message : 'Retrieved List'
+                });
+        });
+}
 module.exports = {
     SelectQuery:SelectQuery,
-    InsertQuery:InsertQuery
+    InsertQuery:InsertQuery,
+    InsertQueryBackup:InsertQueryBackup
 };

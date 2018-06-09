@@ -38,7 +38,7 @@ function createPatient(req, res, next){
       jsonR.numero_historial_clinico+"', '"+
       jsonR.observaciones+"', '"+
       jsonR.dni+"')";
-
+    queries.InsertQueryBackup(req, res, next, "paciente", values);
     queries.InsertQuery(req, res, next, "paciente", values);
 }
 module.exports = {
