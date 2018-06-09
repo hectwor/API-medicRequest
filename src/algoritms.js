@@ -25,7 +25,7 @@ function existPatient(req, res, next){
 }
 function createPatient(req, res, next){
   let jsonR = req.body;
-  let  values = "( default, '"+
+  let  values = "('"+
       jsonR.numero_seguro_social+"', '"+
       jsonR.nombre+"', '"+
       jsonR.apellido+"', '"+
