@@ -21,6 +21,7 @@ function SelectQuery(req, res, next, table, where) {
 
 function InsertQueryCita(req, res, next, table, values){
     const query = "insert into "+table+" values "+values;
+    console.log(query);
     connectionPsql.any(query)
         .then(function(data){
             res.status(200)
