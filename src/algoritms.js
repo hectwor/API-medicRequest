@@ -6,6 +6,9 @@ function getAllDoctors(req, res, next) {
 function getAllPatients(req, res, next) {
     queries.SelectQuery(req, res, next, "paciente", "");
 }
+function getAllDates() {
+    queries.SelectQuery(req, res, next, "cita", "");
+}
 
 function setDate(req, res, next){
   let jsonR = req.body;
@@ -41,6 +44,7 @@ function createPatient(req, res, next){
 module.exports = {
     getAllDoctors: getAllDoctors,
     getAllPatients: getAllPatients,
+    getAllDates:getAllDates,
     setDate: setDate,
     existPatient:existPatient,
     createPatient:createPatient
